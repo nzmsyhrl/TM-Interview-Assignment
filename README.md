@@ -6,12 +6,14 @@ How to run?
 3. Compile the program using the javac command:
 
 ```
-  javac AddressTokenizer.java
+javac AddressTokenizer.java
 ```
   
 This will create a AddressParser.class file in the same directory.
 
 4. Run the program using the java command:
 
-  java AddressTokenizer
+```
+java AddressTokenizer
+```
 
