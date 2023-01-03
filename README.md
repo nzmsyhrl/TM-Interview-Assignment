@@ -9,7 +9,7 @@ How to run?
 javac AddressTokenizer.java
 ```
   
-This will create a AddressParser.class file in the same directory.
+This will create a AddressTokenizer.class file in the same directory.
 
 4. Run the program using the java command:
 
