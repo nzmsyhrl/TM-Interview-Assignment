@@ -62,17 +62,14 @@ var Address = /** @class */ (function () {
     }
     Address.prototype.tokenize = function (address) {
         return __awaiter(this, void 0, void 0, function () {
-            var aptRegex, aptMatch, cities, states, streets, postcodeRegex, postcodeMatch, cityStateRegex, cityStateMatch, streetRegex, streetMatch;
+            var aptRegex, aptMatch, cities, states, streets, cityRegex, cityMatch, stateRegex, stateMatch, postcodeRegex, postcodeMatch, streetRegex, streetMatch;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         // Pre-processing the address
-                        console.log("Original address: ", address);
                         address = address.toLowerCase().replace(/\s+/g, " ").trim();
-                        console.log("Preprocessed address: ", address);
                         aptRegex = /^(no\s)?(\d+)/;
                         aptMatch = address.match(aptRegex);
-                        console.log(aptMatch); // it should print the matched apt number
                         if (aptMatch) {
                             this.apt = aptMatch[0];
                             address = address.replace(aptRegex, "");
@@ -86,29 +83,26 @@ var Address = /** @class */ (function () {
                         return [4 /*yield*/, getStreets()];
                     case 3:
                         streets = _a.sent();
-                        postcodeRegex = /\d{4}/;
+                        cityRegex = new RegExp(cities.join("|"));
+                        cityMatch = address.match(cityRegex);
+                        if (cityMatch) {
+                            this.city = cityMatch[0];
+                            address = address.replace(cityRegex, "");
+                        }
+                        stateRegex = new RegExp(states.join("|"));
+                        stateMatch = address.match(stateRegex);
+                        if (stateMatch) {
+                            this.state = stateMatch[0];
+                            address = address.replace(stateRegex, "");
+                        }
+                        postcodeRegex = /\d{5}/;
                         postcodeMatch = address.match(postcodeRegex);
-                        console.log(postcodeMatch);
                         if (postcodeMatch) {
                             this.postcode = postcodeMatch[0];
                             address = address.replace(postcodeRegex, "");
                         }
-                        cityStateRegex = new RegExp(cities.join("|") + "|" + states.join("|"));
-                        cityStateMatch = address.match(cityStateRegex);
-                        console.log(cityStateMatch);
-                        if (cityStateMatch) {
-                            // check if city or state
-                            if (cities.includes(cityStateMatch[0])) {
-                                this.city = cityStateMatch[0];
-                            }
-                            else {
-                                this.state = cityStateMatch[0];
-                            }
-                            address = address.replace(cityStateRegex, "");
-                        }
                         streetRegex = new RegExp(streets.join("|"));
                         streetMatch = address.match(streetRegex);
-                        console.log(streetMatch);
                         if (streetMatch) {
                             this.street = streetMatch[0];
                             address = address.replace(streetRegex, "");
@@ -122,7 +116,6 @@ var Address = /** @class */ (function () {
     };
     Address.prototype.getAddressComponents = function () {
         var components = {};
-        console.log(components);
         if (this.apt)
             components["apt"] = this.apt.toUpperCase();
         if (this.section)
@@ -135,10 +128,6 @@ var Address = /** @class */ (function () {
             components["state"] = this.state.toUpperCase();
         if (this.street)
             components["street"] = this.street.toUpperCase();
-        if (!this.apt || !this.postcode || !this.city || !this.state) {
-            console.log("Some of the address components are missing, please check and correct the input address.");
-        }
-        console.log(components);
         return components;
     };
     return Address;
@@ -154,13 +143,11 @@ function getCities() {
                     return [4 /*yield*/, fse.readFile("./cities.txt", "utf-8")];
                 case 1:
                     data = _a.sent();
-                    console.log("Cities data: ", data.toString());
-                    // Parse the data and return the list of cities
-                    return [2 /*return*/, data.split("\n")];
+                    return [2 /*return*/, data.split("\n").map(function (city) { return city.trim(); })];
                 case 2:
                     err_1 = _a.sent();
                     console.error(err_1);
-                    throw new Error("Error reading cities from external file: ".concat(err_1));
+                    return [2 /*return*/, []];
                 case 3: return [2 /*return*/];
             }
         });
@@ -177,12 +164,11 @@ function getStates() {
                     return [4 /*yield*/, fse.readFile("./states.txt", "utf-8")];
                 case 1:
                     data = _a.sent();
-                    // Parse the data and return the list of states
-                    return [2 /*return*/, data.split("\n")];
+                    return [2 /*return*/, data.split("\n").map(function (state) { return state.trim(); })];
                 case 2:
                     err_2 = _a.sent();
                     console.error(err_2);
-                    throw new Error("Error reading states from external file: ".concat(err_2));
+                    return [2 /*return*/, []];
                 case 3: return [2 /*return*/];
             }
         });
@@ -199,12 +185,11 @@ function getStreets() {
                     return [4 /*yield*/, fse.readFile("./streets.txt", "utf-8")];
                 case 1:
                     data = _a.sent();
-                    // Parse the data and return the list of streets
-                    return [2 /*return*/, data.split("\n")];
+                    return [2 /*return*/, data.split("\n").map(function (street) { return street.trim(); })];
                 case 2:
                     err_3 = _a.sent();
                     console.error(err_3);
-                    throw new Error("Error reading streets from external file: ".concat(err_3));
+                    return [2 /*return*/, []];
                 case 3: return [2 /*return*/];
             }
         });
