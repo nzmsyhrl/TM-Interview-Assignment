@@ -79,6 +79,6 @@ export class Address {
       temp = temp.replace(this.street, "");
     }
     // everything else is considered as section
-    this.section = temp.replace(/[^a-zA-Z\s]/g, "").trim();
+    this.section = temp.replace(/[^a-zA-Z0-9\s]/g, "").trim();
   }
 }
