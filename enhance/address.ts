@@ -1,35 +1,35 @@
-import * as fs from "fs";
+import { IFileSystem } from "./interfaces";
 
 export class Address {
-  aptNumber: string;
-  city: string;
-  state: string;
-  postcode: string;
-  street: string;
-  section: string;
+  aptNumber: string = "";
+  city: string = "";
+  state: string = "";
+  postcode: string = "";
+  street: string = "";
+  section: string = "";
 
-  private cities: string[];
-  private states: string[];
-  private streets: string[];
+  private cities: string[] = [];
+  private states: string[] = [];
+  private streets: string[] = [];
 
-  constructor(address: string) {
-    this.loadData();
+  constructor(address: string,private fileSystem: IFileSystem, config: any) {
+    this.loadData(config);
     this.tokenize(address);
   }
-
   //if the cities, states and streets have a bigger data, asynchronous method should be applied
   // to read them asynchronously
 
-  private loadData() {
+  private loadData(config: any
+  ) {
     //console.log("Loading data from text file ...");
     try {
       // read the data from the .txt file
       // read the data from the cities.txt file
-      const citiesData = fs.readFileSync("cities.txt", "utf8");
+      const citiesData = this.fileSystem.readFileSync(config.citiesFile || 'cities.txt');
       // read the data from the states.txt file
-      const statesData = fs.readFileSync("states.txt", "utf8");
+      const statesData = this.fileSystem.readFileSync(config.statesFile || 'states.txt');
       // read the data from the streets.txt file
-      const streetsData = fs.readFileSync("streets.txt", "utf8");
+      const streetsData = this.fileSystem.readFileSync(config.streetsFile || 'streets.txt');
 
       // split the data by newline to get an array of strings
       this.cities = citiesData.split("\n");

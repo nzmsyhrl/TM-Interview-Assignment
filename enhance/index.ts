@@ -1,13 +1,17 @@
 import * as readline from "readline";
 import { Address } from "./address";
+import config from "./config.json";
+import { FileSystem } from "./FileSystem";
 
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
 });
 
+const fileSystem = new FileSystem();
+
 rl.question("Please enter a your address: ", (address: string) => {
-  const addressComponents = new Address(address);
+  const addressComponents = new Address(address, fileSystem, config);
   if (addressComponents.aptNumber) {
     console.log(`Apt Number: ${addressComponents.aptNumber}`);
   }
