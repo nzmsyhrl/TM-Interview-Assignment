@@ -103,7 +103,7 @@ async function getCities(): Promise<string[]> {
   try {
     // Read the external file using fs.promises
     const data = await fse.readFile("./cities.txt", "utf-8");
-    return data.split("\n").map((city) => city.trim());
+    return data.split("\n").map((city: string) => city.trim());
   } catch (err) {
     console.error(err);
     return [];
@@ -115,7 +115,7 @@ async function getStates(): Promise<string[]> {
   try {
     // Read the external file using fs.promises
     const data = await fse.readFile("./states.txt", "utf-8");
-    return data.split("\n").map((state) => state.trim());
+    return data.split("\n").map((state: string) => state.trim());
   } catch (err) {
     console.error(err);
     return [];
@@ -127,7 +127,7 @@ async function getStreets(): Promise<string[]> {
   try {
     // Read the external file using fs.promises
     const data = await fse.readFile("./streets.txt", "utf-8");
-    return data.split("\n").map((street) => street.trim());
+    return data.split("\n").map((street: string) => street.trim());
   } catch (err) {
     console.error(err);
     return [];
