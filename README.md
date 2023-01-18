@@ -17,3 +17,8 @@ This will create javascript files in the dist directory.
 node index or node dist/index
 ```
 
+5. You should be prompted with the input from the program:
+
+```
+Please enter a your address:
+```
