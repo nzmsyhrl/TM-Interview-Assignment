@@ -34,3 +34,9 @@ You need to run *tsc* command to transpile the typescript files to javascript fi
 ```
 tsc
 ```
+
+# Conclusion
+
+To summarize, the program is used to extract the address components (aptNumber, city, state, postcode, street, and section) from a given address using regular expressions. The program reads the necessary data (cities, states, and streets) from text files using the FileSystem class and the config.json file to determine the location of these files.
+
+Overall, this program structure is a good start for a small-scale address extraction program, but it would benefit from more robust error handling and testing. Additionally, if the program were to be used in a production environment, it would be beneficial to implement a more efficient method for loading the data from the text files, such as using a database instead of reading from text files.
