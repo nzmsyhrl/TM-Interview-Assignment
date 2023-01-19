@@ -4,15 +4,15 @@
 This program is an example of how to parse an address string and extract its components (aptNumber, city, state, postcode, street, and section) using regular expressions.
 
 # Prerequisites
-Node.js and TypeScript should be installed on your machine.
-Make sure that you have the following files and folders in the root of your project:
-src (folder) containing index.ts, address.ts, FileSystem.ts, interfaces.ts and config.json
-dist (folder) containing the generated .js files and cities.txt, states.txt and streets.txt
+Install Node.js and TypeScript on your machine. Note that TypeScript need to be installed globally. You can also install it by running the following command, “npm install -g typescript” . 
 
-Before running the program, please make sure that you have all the necessary files and folders in the correct location, and that the file paths in the 'config.json' file in the src folder are correct and point to the correct location of the 'cities.txt', 'states.txt', and 'streets.txt' files, which are present in both src and dist folders.
+As for Node.js, make sure that you have the correct version of Node.js installed on your machine, check the version by running “node -v command” .
 
-You need to install TypeScript globally, if you haven't done that, you can run npm install -g typescript command to install it. Also, you need to make sure that you have the correct version of Node.js installed on your machine, check the version by running node -v command.
+Place the following files and folders in the root of your project:
+1.	Folder src containing index.ts, address.ts, FileSystem.ts, interfaces.ts and config.json
+2.	Folder dist containing the generated .js files, config.json and cities.txt, states.txt and streets.txt
 
+Ensure the file paths in the 'config.json' file in the src folder are correct and point to the correct location of the 'cities.txt', 'states.txt', and 'streets.txt' files.
 # Running the program
 
 1. Open a terminal and navigate to the root of the project
