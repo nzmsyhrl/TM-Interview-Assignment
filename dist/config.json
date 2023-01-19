@@ -1,0 +1,5 @@
+{
+    "citiesFile": "./src/cities.txt",
+    "statesFile": "./src/states.txt",
+    "streetsFile": "./src/streets.txt"
+}

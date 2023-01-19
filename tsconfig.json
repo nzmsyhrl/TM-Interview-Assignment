@@ -4,6 +4,8 @@
     "module": "commonjs",
     "strict": true,
     "sourceMap": true,
+    "rootDir": "src",
+    "outDir": "dist",
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "lib": ["es2015", "dom"]
