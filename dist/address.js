@@ -14,7 +14,7 @@ class Address {
         this.states = [];
         this.streets = [];
         this.loadData(config);
-        this.tokenize(address);
+        this.tokenize(address.trim());
     }
     //if the cities, states and streets have a bigger data, asynchronous method should be applied
     // to read them asynchronously
@@ -44,7 +44,7 @@ class Address {
         const cityRegex = new RegExp(`(${this.cities.join("|")})`, "gi");
         const stateRegex = new RegExp(`(${this.states.join("|")})`, "gi");
         const postcodeRegex = /\b[0-9]{5}\b/g;
-        const streetRegex = new RegExp(`(${this.streets.join("|")})`, "gi");
+        const streetRegex = new RegExp(`(${this.streets.join("|")})([\\s\\d\\w-]+)?`, "gi");
         let temp = address;
         // match each component in the address string
         //console.log("matching aptNumber ...");

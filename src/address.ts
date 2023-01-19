@@ -14,7 +14,7 @@ export class Address {
 
   constructor(address: string,private fileSystem: IFileSystem, config: any) {
     this.loadData(config);
-    this.tokenize(address);
+    this.tokenize(address.trim());
   }
   //if the cities, states and streets have a bigger data, asynchronous method should be applied
   // to read them asynchronously
@@ -47,7 +47,7 @@ export class Address {
     const cityRegex = new RegExp(`(${this.cities.join("|")})`, "gi");
     const stateRegex = new RegExp(`(${this.states.join("|")})`, "gi");
     const postcodeRegex = /\b[0-9]{5}\b/g;
-    const streetRegex = new RegExp(`(${this.streets.join("|")})`, "gi");
+    const streetRegex = new RegExp(`(${this.streets.join("|")})([\\s\\d\\w-]+)?`, "gi");
 
     let temp = address;
 
