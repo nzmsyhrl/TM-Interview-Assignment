@@ -16,11 +16,11 @@ You need to install TypeScript globally, if you haven't done that, you can run n
 # Running the program
 
 1. Open a terminal and navigate to the root of the project
-2. Run tsc to compile the TypeScript code to JavaScript
+2. Run *tsc* to compile the TypeScript code to JavaScript
 ```
 tsc
 ```
-3. Run node dist/index.js to start the program
+3. Run *node dist/index.js* to start the program
 ```
 node dist/index.js
 ```
@@ -29,7 +29,7 @@ node dist/index.js
 
 Reminder: Before running the program, please make sure that you have all the necessary files and folders in the root of the project and that the file paths in the 'config.json' file are correct and point to the correct location of the 'cities.txt', 'states.txt', and 'streets.txt' files.
 
-You need to run tsc command to transpile the typescript files to javascript files, and then run the compiled javascript file using node command, which are located in the dist folder, that's why it is important to ensure that the dist folder is present before running the code.
+You need to run *tsc* command to transpile the typescript files to javascript files, and then run the compiled javascript file using node command, which are located in the dist folder, that's why it is important to ensure that the dist folder is present before running the code.
 
 ```
 tsc
